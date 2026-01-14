@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Áreas y Perímetros</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Áreas y Perímetros</h1>
+<h2>Selecciona la figura y llena los datos</h2>
+
+<!-- FORMULARIO 1: ELEGIR FIGURA -->
+<form method="POST">
+    {% csrf_token %}
+    <select name="figura" required>
+        <option value="circulo" {% if figura == "circulo" %}selected{% endif %}>Círculo</option>
+        <option value="cuadrado" {% if figura == "cuadrado" %}selected{% endif %}>Cuadrado</option>
+        <option value="rectangulo" {% if figura == "rectangulo" %}selected{% endif %}>Rectángulo</option>
+        <option value="triangulo" {% if figura == "triangulo" %}selected{% endif %}>Triángulo</option>
+    </select>
+
+    <button type="submit" name="seleccionar">Elegir figura</button>
+</form>
+
+<!-- INFORMACIÓN SOBRE LA FIGURA -->
+{% if figura %}
+<div class="info-box">
+    {% if figura == "circulo" %}
+        <h3>Círculo</h3>
+        <p>El <strong>área</strong> de un círculo se calcula como: <strong>Área = π × radio²</strong></p>
+        <p>El <strong>perímetro</strong> (circunferencia) se calcula como: <strong>Perímetro = 2 × π × radio</strong></p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6aQn5yxOBs6RbZ4ZCpCUepSXMcAHvc9sjBw&s" alt="Círculo" class="figura-img">
+        <p>Video explicativo: <a href="https://www.youtube.com/watch?v=5-ySgzG4V7I" target="_blank">Cómo calcular área y perímetro de un círculo</a></p>
+    {% elif figura == "cuadrado" %}
+        <h3>Cuadrado</h3>
+        <p>El <strong>área</strong> de un cuadrado se calcula como: <strong>Área = lado × lado</strong></p>
+        <p>El <strong>perímetro</strong> se calcula como: <strong>Perímetro = 4 × lado</strong></p>
+        <img src="{% static 'images/cuadrado.png' %}" alt="Cuadrado" class="figura-img">
+        <p>Video explicativo: <a href="https://www.youtube.com/watch?v=2djf5tQ6z9g" target="_blank">Cómo calcular área y perímetro de un cuadrado</a></p>
+    {% elif figura == "rectangulo" %}
+        <h3>Rectángulo</h3>
+        <p>El <strong>área</strong> de un rectángulo se calcula como: <strong>Área = base × altura</strong></p>
+        <p>El <strong>perímetro</strong> se calcula como: <strong>Perímetro = 2 × (base + altura)</strong></p>
+        <img src="{% static 'images/rectangulo.png' %}" alt="Rectángulo" class="figura-img">
+        <p>Video explicativo: <a href="https://www.youtube.com/watch?v=Jq5H5LzX0ik" target="_blank">Cómo calcular área y perímetro de un rectángulo</a></p>
+    {% elif figura == "triangulo" %}
+        <h3>Triángulo</h3>
+        <p>El <strong>área</strong> de un triángulo se calcula como: <strong>Área = (base × altura) ÷ 2</strong></p>
+        <p>El <strong>perímetro</strong> depende de los lados: <strong>Perímetro = lado1 + lado2 + lado3</strong></p>
+        <img src="{% static 'images/triangulo.png' %}" alt="Triángulo" class="figura-img">
+        <p>Video explicativo: <a href="https://www.youtube.com/watch?v=x4v1Z3w6M1Y" target="_blank">Cómo calcular área y perímetro de un triángulo</a></p>
+    {% endif %}
+</div>
+{% endif %}
+
+<!-- FORMULARIO 2: CAMPOS NECESARIOS -->
+{% if mostrar %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="figura" value="{{ figura }}">
+
+    {% if figura == "circulo" %}
+        <input type="number" step="0.01" name="radio" placeholder="Radio" required>
+    {% elif figura == "cuadrado" %}
+        <input type="number" step="0.01" name="lado" placeholder="Lado" required>
+    {% elif figura == "rectangulo" %}
+        <input type="number" step="0.01" name="base" placeholder="Base" required>
+        <input type="number" step="0.01" name="altura" placeholder="Altura" required>
+    {% elif figura == "triangulo" %}
+        <input type="number" step="0.01" name="base_triangulo" placeholder="Base del triángulo" required>
+        <input type="number" step="0.01" name="altura_triangulo" placeholder="Altura del triángulo" required>
+    {% endif %}
+
+    <button type="submit" name="calcular">Calcular</button>
+</form>
+{% endif %}
+
+<!-- RESULTADOS -->
+{% if resultado or perimetro %}
+<div class="resultado-box">
+    <h3>Resultado</h3>
+    {% if resultado %}
+        <p>{{ resultado }}</p>
+    {% endif %}
+    {% if perimetro %}
+        <p>{{ perimetro }}</p>
+    {% endif %}
+</div>
+{% endif %}
+
+<br>
+<a href="/">⬅ Regresar</a>
+
+</body>
+</html>

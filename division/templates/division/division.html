@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>División</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>División</h1>
+
+<div class="info-box">
+    <h2>¿Qué es la división?</h2>
+    <p>
+        operación matemática fundamental que consiste en quitar, reducir o separar una cantidad de otra para encontrar la <br>
+        diferencia entre ellas, siendo la operación inversa a la suma y representada por el signo "menos" (–)<br>
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>Resolver divisiones implica repartir una cantidad en partes iguales, usando la multiplicación como base: <br>
+        se busca cuántas veces cabe el divisor en el dividendo (o partes de este), se escribe el resultado (cociente), <br>
+        se multiplica y se resta, bajando el siguiente dígito del dividendo y repitiendo el proceso hasta terminar,<br>
+         obteniendo un residuo (que puede ser cero). <br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>10 ÷ 3 = 3 
+        con resto 1 (no se puede dividir 10 entre 3 de forma entera, sobra 1).</p><br>
+
+    <a href="https://share.google/Vy5iUX7UxBgUugRk4" alt="Ejemplo de resta" class="figura-img">
+    <h4>imagen sacada de Tutorela.com</h4><br>
+</img>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://share.google/j8RE0rnIw1LJ2XVzy" target="_blank">
+           División – Daniel Carrreon
+        </a>
+    </p>
+</div>
+
+<form method="POST">{% csrf_token %}
+    <input name="a" type="number" step="any" placeholder="Número 1">
+    <input name="b" type="number" step="any" placeholder="Número 2">
+    <button>Calcular</button>
+</form>
+
+{% if error %}
+<h2 style="color: red;">{{ error }}</h2>
+{% endif %}
+
+{% if resultado != None %}
+<h2>Resultado: {{ resultado }}</h2>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>
