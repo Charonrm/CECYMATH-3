@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Recta Numérica</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+<h1>Recta Numérica</h1>
+
+<div class="info-box">
+    <h2>¿Qué es una recta numérica?</h2>
+    <p>
+       La recta numérica es una representación gráfica que muestra los números en una línea horizontal.Cada punto en la línea<br>
+        corresponde a un número, y la distancia entre los puntos es igual, lo que refleja la relación de orden entre los números.
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+         dibujar una línea, marcar el cero en el centro y luego ubicar números enteros, fracciones o decimales de forma ordenada,<br>
+          moviéndote a la derecha para positivos y a la izquierda para negativos, dividiendo los espacios según el denominador<br>
+           (en fracciones) o decimales <br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>2 x 3 = 6:<br>
+     Sumar 2 tres veces (2 + 2 + 2) o sumar 3 dos veces (3 + 3).</p><br>
+
+    <a href="https://share.google/BZS3B2hbZ1BtKl1cK" alt="Ejemplo de multiplicación" class="figura-img">
+    <h4>imagen sacada de GeoGebra.com</h4><br>
+</a>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://share.google/vTdMGimeoQMuLUZjo" target="_blank">
+            Recta numérica – Daniel Carreon
+        </a>
+    </p>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" name="ini" placeholder="Inicio" required>
+    <input type="number" name="fin" placeholder="Fin" required>
+    <button>Generar</button>
+</form>
+
+{% if recta %}
+<h2>Resultado:</h2>
+<p>{{ recta }}</p>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>

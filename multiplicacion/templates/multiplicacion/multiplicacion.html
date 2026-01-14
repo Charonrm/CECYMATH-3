@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<title>Multiplicación</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Multiplicación</h1>
+
+<div class="info-box">
+    <h2>¿Qué es la multiplicación?</h2>
+    <p>
+       Es una operación matemática que sirve para sumar un mismo número (multiplicando) repetidas veces,<br>
+       indicado por otro número (multiplicador), siendo una forma abreviada y eficiente de hacer sumas largas<br>
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+         Primero, se alinea verticalmente los números,<br>
+         luego se multiplica el dígito de las unidades del número de abajo por cada dígito del número de arriba <br>
+         (empezando por la derecha) y se anota el resultado. <br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>2 x 3 = 6:<br>
+     Sumar 2 tres veces (2 + 2 + 2) o sumar 3 dos veces (3 + 3).</p><br>
+
+    <a href="https://share.google/wxIjA8kNg6wJ3eIqd" alt="Ejemplo de multiplicación" class="figura-img">
+    <h4>imagen sacada de pequeocio.com</h4><br>
+</a>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://share.google/dOAdHvE3KMEHIsvur" target="_blank">
+            Multiplicacion con dos cifras – Daniel Carreon
+        </a>
+    </p>
+</div>
+
+<form method="POST">{% csrf_token %}
+    <input name="a" type="number" step="any" placeholder="Número 1">
+    <input name="b" type="number" step="any" placeholder="Número 2">
+    <button>Calcular</button>
+</form>
+
+{% if resultado != None %}
+<h2>Resultado: {{ resultado }}</h2>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>

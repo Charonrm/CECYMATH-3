@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Polinomios</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h2>Calculadora de Polinomios</h2>
+
+<div class="info-box">
+    <h2>¿Qué son los polinomios?</h2>
+    <p>
+       es una expresión matemática que consiste en la suma de uno o más monomios, donde cada monomio es el producto de una constante <br>
+       (coeficiente) y una o más variables elevadas a exponentes enteros y no negativos<br>
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+         1: Paréntesis (y otros signos de agrupación), de adentro hacia afuera; 2:Potencias y raíces; 3:Multiplicaciones y <br>
+         divisiones (de izquierda a derecha); y 4:Sumas y restas (de izquierda a derecha)<br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>\((2x^{2}+3x-1)+(x^{2}-5x+4)\) <br>
+    \((2x^{2}+x^{2})+(3x-5x)+(-1+4)=3x^{2}-2x+3\)</p><br>
+
+    <a href="https://share.google/cq9lrYdL8dkfWOcJR" alt="Ejemplo de jerarquia de operaciones" class="figura-img">
+    <h4>imagen sacada de wikiHow.com</h4><br>
+</img>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://share.google/9VSIr3x6Q1rUSeLVG" target="_blank">
+           Polinomios – Daniel Carrreon
+        </a>
+    </p>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Polinomio 1:</label><br>
+    <input type="text" name="polinomio1"
+           placeholder="Ej: 2a+4b^2-5ab-4a"
+           required><br><br>
+
+    <label>Polinomio 2:</label><br>
+    <input type="text" name="polinomio2"
+           placeholder="Ej: a-b"
+           required><br><br>
+
+    <label>Operación:</label><br>
+    <select name="operacion">
+        <option value="suma">Suma</option>
+        <option value="resta">Resta</option>
+        <option value="multiplicacion">Multiplicación</option>
+        <option value="division">División</option>
+    </select><br><br>
+
+    <button type="submit">Calcular</button>
+</form>
+
+{% if resultado %}
+    <h3>Resultado:</h3>
+    <p>{{ resultado }}</p>
+{% endif %}
+
+{% if error %}
+    <p style="color:red">{{ error }}</p>
+{% endif %}
+
+</body>
+</html>
