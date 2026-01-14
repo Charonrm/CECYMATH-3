@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Suma</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<h1>Suma</h1>
+
+<!-- INFORMACIÓN -->
+<div class="info-box">
+    <h2>¿Qué es una suma?</h2>
+    <p>
+        La <strong>suma</strong> es una operación matemática que consiste en
+        <strong>juntar o agregar cantidades</strong> para obtener un resultado total.
+    </p>
+
+    <h3>¿Cómo se hace una suma?</h3>
+    <p>
+        Se colocan los números uno debajo del otro y se suman.
+        El resultado es la cantidad total.
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>5 + 3 = 8</p>
+
+    <img src="https://matesdeprimaria.es/imagenes/sumas.jpg" alt="Ejemplo de suma" class="figura-img">
+    <h4>imagen sacada de google de mates de primaria.com</h4>
+</img>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://youtu.be/oF-rZLIShC8?si=5rGF9jRXB21HJHU9" target="_blank">
+            ¿Qué es la suma? – Matemáticas básicas
+        </a>
+    </p>
+</div>
+
+<!-- FORMULARIO -->
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" step="any" name="a" placeholder="Número 1" required>
+    <input type="number" step="any" name="b" placeholder="Número 2" required>
+    <button>Calcular</button>
+</form>
+
+<!-- RESULTADO -->
+{% if resultado != None %}
+<div class="resultado-box">
+    <h2>Resultado: {{ resultado }}</h2>
+</div>
+{% endif %}
+
+<br>
+<a href="/">⬅ Regresar</a>
+
+</body>
+</html>

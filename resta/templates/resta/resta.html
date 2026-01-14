@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<title>Resta</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Resta</h1>
+
+<div class="info-box">
+    <h2>¿Qué es la resta?</h2>
+    <p>
+      operación matemática fundamental que consiste en quitar, reducir o separar una cantidad de otra para encontrar la <br>
+      diferencia entre ellas, siendo la operación inversa a la suma y representada por el signo "menos" (–)<br>
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+          quitar una cantidad (sustraendo) de otra mayor (minuendo) usando el signo menos (-), <br>
+          comenzando por las unidades (derecha a izquierda) y usando el concepto de "llevar" <br>
+          o "pedir prestado" si una cifra es menor, transformando el número anterior para poder restar<br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>Si tienes 5 manzanas (minuendo) y te quitan 2 (sustraendo), <br>
+       te quedan 3 manzanas (diferencia). Se escribe: \(5-2=3\)</p><br>
+
+    <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.significados.com%2Fresta%2F&psig=AOvVaw1LSubLI3jJ-C2w9DZasTCj&ust=1768400878273000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwj5uNDi3IiSAxUInSYFHVbjI9gQjRx6BAgAEBo" alt="Ejemplo de resta" class="figura-img">
+    <h4>imagen sacada de wikiHow.com</h4><br>
+</img>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://share.google/3TeovehR4DbOvE14e" target="_blank">
+           Resta – Daniel Carrreon
+        </a>
+    </p>
+</div>
+
+<form method="POST">{% csrf_token %}
+    <input name="a" type="number" step="any" placeholder="Número 1">
+    <input name="b" type="number" step="any" placeholder="Número 2">
+    <button>Calcular</button>
+</form>
+
+{% if resultado != None %}
+<h2>Resultado: {{ resultado }}</h2>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>
