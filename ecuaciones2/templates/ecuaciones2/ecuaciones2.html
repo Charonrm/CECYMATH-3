@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ecuaciones 2° Grado</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<h1>Ecuaciones de Segundo Grado</h1>
+<p>Forma: ax² + bx + c = 0</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" step="any" name="a" placeholder="a">
+    <input type="number" step="any" name="b" placeholder="b">
+    <input type="number" step="any" name="c" placeholder="c">
+    <button>Calcular</button>
+</form>
+
+{% if error %}
+<h2 style="color:red;">{{ error }}</h2>
+{% endif %}
+
+{% if x1 != None %}
+<h2>x₁ = {{ x1 }}</h2>
+<h2>x₂ = {{ x2 }}</h2>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>

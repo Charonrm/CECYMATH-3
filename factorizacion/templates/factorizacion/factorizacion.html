@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Factorización</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Factorización</h1>
+
+<div class="info-box">
+    <h2>¿Qué es la factorizacion?</h2>
+    <p>
+        técnica matemática que consiste en descomponer una expresión (número o polinomio) en el<br>
+        producto de otros factores más simples que, al multiplicarse, nos devuelven la expresión original.<br>
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+         1: Paréntesis (y otros signos de agrupación), de adentro hacia afuera; 2:Potencias y raíces; 3:Multiplicaciones y <br>
+         divisiones (de izquierda a derecha); y 4:Sumas y restas (de izquierda a derecha)<br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>5 + 2 * 3 = <br>
+    Primero la multiplicación: 2 * 3 = 6. Luego la suma: 5 + 6 = 11.</p><br>
+
+    <img src="https://matematicasparaticharito.wordpress.com/tag/factorizacion/" alt="Ejemplo de factorizacion" class="figura-img">
+    <h4>imagen sacada de google de https://matematicasparaticharito.wordpress.com/tag/factorizacion/</h4><br>
+</img>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://youtu.be/4bCKKe3mR08?si=cHt30mypkXofl6t5" target="_blank">
+            factorizacion – Matemáticas básicas
+        </a>
+    </p>
+</div>
+
+<p>Factoriza la forma ax² + bx + c</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" step="any" name="a" placeholder="a">
+    <input type="number" step="any" name="b" placeholder="b">
+    <input type="number" step="any" name="c" placeholder="c">
+    <button>Factorizar</button>
+</form>
+
+{% if error %}
+<h2 style="color:red;">{{ error }}</h2>
+{% endif %}
+
+{% if resultado %}
+<h2>Resultado: {{ resultado }}</h2>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>

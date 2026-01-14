@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Jerarquía de operaciones</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+<h1>Jerarquía de Operaciones</h1>
+
+<div class="info-box">
+    <h2>¿Qué es la jerarquia de operaciones?</h2>
+    <p>
+       Es el orden estándar para resolver expresiones matemáticas con múltiples operaciones<br>
+       (suma, resta, multiplicación, etc.) para asegurar un resultado único y correcto.<br>
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+         1: Paréntesis (y otros signos de agrupación), de adentro hacia afuera; 2:Potencias y raíces; 3:Multiplicaciones y <br>
+         divisiones (de izquierda a derecha); y 4:Sumas y restas (de izquierda a derecha)<br>
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>5 + 2 * 3 = <br>
+    Primero la multiplicación: 2 * 3 = 6. Luego la suma: 5 + 6 = 11.</p><br>
+
+    <img src="https://share.google/AUY7ZJZ6jENMYeTjn" alt="Ejemplo de jerarquia de operaciones" class="figura-img">
+    <h4>imagen sacada de google de mates de primaria.com</h4><br>
+</img>
+
+    <p>
+        🎥 Video explicativo:
+        <a href="https://share.google/Bc883cQ229N2ouX8c" target="_blank">
+            Jerarqu de las Operaciones – Matemáticas básicas
+        </a>
+    </p>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="expresion" placeholder="Ej: 2+3*4-(5/2)">
+    <button>Calcular</button>
+</form>
+
+{% if error %}
+<h2 style="color:red;">{{ error }}</h2>
+{% endif %}
+
+{% if resultado != None %}
+<h2>Resultado: {{ resultado }}</h2>
+{% endif %}
+
+<a href="/">Regresar</a>
+</body>
+</html>
