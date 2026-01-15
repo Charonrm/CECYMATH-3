@@ -1,32 +1,77 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
+{% load static %}
 <head>
-<meta charset="UTF-8">
-<title>Ecuaciones de 1er Grado</title>
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Ecuaciones de Primer Grado</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
-<h1>Ecuación de Primer Grado</h1>
-<p>Forma: ax + b = c</p>
+
+<h2>Ecuaciones de Primer Grado</h2>
+
+<div class="info-box">
+    <h2>¿Qué son las ecuaciones de primer grado?</h2>
+    <p>
+        Son expresiones matemáticas donde la incógnita aparece elevada a la potencia uno.<br>
+        Su forma general es: <strong>ax + b = c</strong>, donde <strong>a ≠ 0</strong>.
+    </p><br>
+
+    <h3>¿Cómo se resuelve?</h3>
+    <p>
+        Se despeja la incógnita pasando los términos conocidos al otro lado de la igualdad,<br>
+        aplicando operaciones inversas hasta dejar sola la variable.
+    </p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>
+        \(2x + 4 = 10\)<br>
+        \(2x = 6\)<br>
+        \(x = 3\)
+    </p><br>
+
+    <img src="{% static 'img/ime1.jpg' %}"
+         alt="Ejemplo de ecuación de primer grado"
+         class="figura-img">
+
+    <h4>Imagen tomada de Tu profe en linea en Youtube </h4><br>
+
+    <p>
+        🎥 Video explicativo:  
+        <a href="https://youtu.be/IHblqjW8RY8?si=AbTA4YcnZI8E_iAD" target="_blank">
+            Ecuaciones de primer grado – Daniel Carreón
+        </a>
+    </p>
+</div>
 
 <form method="POST">
     {% csrf_token %}
-    <input type="number" step="any" name="a" placeholder="a">
-    <input type="number" step="any" name="b" placeholder="b">
-    <input type="number" step="any" name="c" placeholder="c">
-    <button>Resolver</button>
+
+    <input type="number" step="any" name="a" placeholder="a" required>
+    <input type="number" step="any" name="b" placeholder="b" required>
+    <input type="number" step="any" name="c" placeholder="c" required>
+
+    <button type="submit">Resolver</button>
 </form>
 
-{% if error %}
-<h2 style="color:red;">{{ error }}</h2>
-{% endif %}
-
 {% if x != None %}
-<h2>Resultado: x = {{ x }}</h2>
+    <h3>Resultado:</h3>
+    <p>x = {{ x }}</p>
 {% endif %}
 
-<a href="/"> ⬅ Regresar</a>
+{% if error %}
+    <p style="color:red">{{ error }}</p>
+{% endif %}
+
+<br>
+<br>
+<br>
+<a href="/">⬅ Regresar</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 </body>
 </html>

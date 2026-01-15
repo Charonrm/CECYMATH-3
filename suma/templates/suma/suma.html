@@ -27,13 +27,16 @@
 
     <p><strong>Ejemplo:</strong></p>
     <p>5 + 3 = 8</p>
-
-    <img src="https://matesdeprimaria.es/imagenes/sumas.jpg" alt="Ejemplo de suma" class="figura-img">
-    <h4>imagen sacada de google de mates de primaria.com</h4>
-</img>
+    
+    <img src="{% static 'img/ims.jpg' %}"
+     alt="Ejemplo de suma"
+     class="figura-img">
+     <h4>imagen sacada de google de matesdeprimaria.com</h4>
+    </img>
 
     <p>
         🎥 Video explicativo:
+        
         <a href="https://youtu.be/oF-rZLIShC8?si=5rGF9jRXB21HJHU9" target="_blank">
             ¿Qué es la suma? – Matemáticas básicas
         </a>
@@ -54,9 +57,11 @@
     <h2>Resultado: {{ resultado }}</h2>
 </div>
 {% endif %}
-
+<br>
 <br>
 <a href="/">⬅ Regresar</a>
+<br>
+<br>
 <br>
 <br>
 </body>

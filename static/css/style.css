@@ -120,3 +120,13 @@ a:hover {
     color: #ffe066;
     transform: scale(1.1);
 }
+
+.figura-img {
+    width: 60%;     
+    max-width: 250px;  
+    height: auto;     
+    margin: 20px auto; 
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}

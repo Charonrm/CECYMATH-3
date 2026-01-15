@@ -27,14 +27,16 @@
     <p>5 + 2 * 3 = <br>
     Primero la multiplicación: 2 * 3 = 6. Luego la suma: 5 + 6 = 11.</p><br>
 
-    <img src="https://share.google/AUY7ZJZ6jENMYeTjn" alt="Ejemplo de jerarquia de operaciones" class="figura-img">
-    <h4>imagen sacada de google de mates de primaria.com</h4><br>
-</img>
+    <img src="{% static 'img/imj.jpg' %}"
+     alt="Ejemplo de jerarquia de operaciones"
+     class="figura-img">
+
+    <h4>imagen sacada de pinterest</h4><br>
 
     <p>
-        🎥 Video explicativo:
+        🎥 Video explicativo:  
         <a href="https://share.google/Bc883cQ229N2ouX8c" target="_blank">
-            Jerarqu de las Operaciones – Matemáticas básicas
+              Jerarquia de las Operaciones – Matemáticas básicas
         </a>
     </p>
 </div>
@@ -52,7 +54,13 @@
 {% if resultado != None %}
 <h2>Resultado: {{ resultado }}</h2>
 {% endif %}
-
+<br>
+<br>
+<br>
 <a href="/">⬅ Regresar</a>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
